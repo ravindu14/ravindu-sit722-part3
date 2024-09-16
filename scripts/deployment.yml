@@ -22,7 +22,7 @@ spec:
             - containerPort: 8000
           env:
             - name: DATABASE_URL
-              value: "postgresql://ravindusit722part3@ravindusit722part3:LcrWYBdupn25yAGfpKfRrWCF/6zLvoeyM/emQNjSGU+ACRAfRZ3i@ravindusit722part3.postgres.database.azure.com:5432/ravindusit722part3db?sslmode=require"
+              value: "postgresql://ravindu_sit722_postgresql_0nfp_user:Olo8Q4msmzItCh0AQVlUy1eqgzmDZnhW@dpg-crjrckjtq21c73a598h0-a.oregon-postgres.render.com/ravindu_sit722_postgresql_0nfp"
 
 ---
 apiVersion: v1
@@ -62,7 +62,7 @@ spec:
             - containerPort: 8000
           env:
             - name: DATABASE_URL
-              value: "postgresql://ravindusit722part3@ravindusit722part3:LcrWYBdupn25yAGfpKfRrWCF/6zLvoeyM/emQNjSGU+ACRAfRZ3i@ravindusit722part3.postgres.database.azure.com:5432/ravindusit722part3db?sslmode=require"
+              value: "postgresql://ravindu_sit722_postgresql_0nfp_user:Olo8Q4msmzItCh0AQVlUy1eqgzmDZnhW@dpg-crjrckjtq21c73a598h0-a.oregon-postgres.render.com/ravindu_sit722_postgresql_0nfp"
 
 ---
 apiVersion: v1
