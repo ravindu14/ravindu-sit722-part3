@@ -1,1 +1,79 @@
-# Your Solution
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog-deployment
+  labels:
+    app: book-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: book-catalog
+  template:
+    metadata:
+      labels:
+        app: book-catalog
+    spec:
+      containers:
+        - name: book-catalog-container
+          image: ravindusit722part3.azurecr.io/book_catalog:1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://ravindusit722part3@ravindusit722part3:LcrWYBdupn25yAGfpKfRrWCF/6zLvoeyM/emQNjSGU+ACRAfRZ3i@ravindusit722part3.postgres.database.azure.com:5432/ravindusit722part3db?sslmode=require"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-catalog-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: book-catalog
+  ports:
+    - protocol: TCP
+      port: 80 # External port exposed to the outside world
+      targetPort: 8000 # Port inside the container
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-management-deployment
+  labels:
+    app: inventory-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-management
+  template:
+    metadata:
+      labels:
+        app: inventory-management
+    spec:
+      containers:
+        - name: inventory-management-container
+          image: ravindusit722part3.azurecr.io/inventory_management:1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://ravindusit722part3@ravindusit722part3:LcrWYBdupn25yAGfpKfRrWCF/6zLvoeyM/emQNjSGU+ACRAfRZ3i@ravindusit722part3.postgres.database.azure.com:5432/ravindusit722part3db?sslmode=require"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-management-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: inventory-management
+  ports:
+    - protocol: TCP
+      port: 81 # External port exposed to the outside world
+      targetPort: 8000 # Port inside the container

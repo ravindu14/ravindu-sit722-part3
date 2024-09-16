@@ -1,1 +1,21 @@
-# Your Solution
+version: "3"
+services:
+  book_catalog:
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://ravindu_sit722_postgresql_0nfp_user:Olo8Q4msmzItCh0AQVlUy1eqgzmDZnhW@dpg-crjrckjtq21c73a598h0-a.oregon-postgres.render.com/ravindu_sit722_postgresql_0nfp
+    depends_on:
+      - inventory_management
+
+  inventory_management:
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://ravindu_sit722_postgresql_0nfp_user:Olo8Q4msmzItCh0AQVlUy1eqgzmDZnhW@dpg-crjrckjtq21c73a598h0-a.oregon-postgres.render.com/ravindu_sit722_postgresql_0nfp
